@@ -1,10 +1,10 @@
 import Foundation
 
-protocol Resolver: AnyObject {
+public protocol Resolver: AnyObject {
     func resolve<Service>(_ type: Service.Type) -> Service
 }
 
-final class Container: @unchecked Sendable {
+public final class Container: @unchecked Sendable {
     private var storage: [String: Any] = [:]
 
     func register<Service>(_ type: Service.Type, factory: @escaping (Resolver) -> Service) {
@@ -14,7 +14,7 @@ final class Container: @unchecked Sendable {
 }
 
 extension Container: Resolver {
-    func resolve<Service>(_ type: Service.Type) -> Service {
+    public func resolve<Service>(_ type: Service.Type) -> Service {
         let key = "\(type)"
         guard let factory = storage[key] else {
             fatalError("Dependency \(key) has not been registered")

@@ -9,7 +9,7 @@ public final class Container: @unchecked Sendable {
 
     public init() { }
 
-    func register<Service>(_ type: Service.Type, factory: @escaping (Resolver) -> Service) {
+    public func register<Service>(_ type: Service.Type, factory: @escaping (Resolver) -> Service) {
         let key = "\(type)"
         storage[key] = factory
     }

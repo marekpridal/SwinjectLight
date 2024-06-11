@@ -7,6 +7,8 @@ public protocol Resolver: AnyObject {
 public final class Container: @unchecked Sendable {
     private var storage: [String: Any] = [:]
 
+    public init() { }
+
     func register<Service>(_ type: Service.Type, factory: @escaping (Resolver) -> Service) {
         let key = "\(type)"
         storage[key] = factory

@@ -2,7 +2,7 @@
 
 ![Build](https://github.com/marekpridal/SwinjectLight/actions/workflows/build.yml/badge.svg) ![Test](https://github.com/marekpridal/SwinjectLight/actions/workflows/test.yml/badge.svg) ![platforms](https://img.shields.io/badge/platform-iOS%20%7C%20watchOS%20%7C%20tvOS%20%7C%20macOS%20%7C%20Windows%20%7C%20Ubuntu-333333) [![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager) ![GitHub](https://img.shields.io/github/license/marekpridal/SwinjectLight) ![GitHub All Releases](https://img.shields.io/github/downloads/marekpridal/SwinjectLight/total)
 
-SwinjectLight is framework for lightweight dependency injection which works on any platform supporting Swift. Framework took inspiration from original [Swinject](https://github.com/Swinject/Swinject) implementation but removes some more complext functionality which is usually not necessary.
+SwinjectLight is framework for lightweight dependency injection which works on any platform supporting Swift. Framework took inspiration from original [Swinject](https://github.com/Swinject/Swinject) implementation but removes some more complex functionality which is usually not necessary.
 
 ## Installation
 

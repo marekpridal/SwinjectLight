@@ -1,0 +1,37 @@
+
+name: Test
+
+on:
+  push:
+    branches:
+    - '*'
+    - '!feature/**'
+
+jobs:
+  test:
+    name: Test
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+
+      - name: Test
+        run: swift test -v --enable-test-discovery --sanitize=thread --parallel
+
+  test-windows:
+    name: Test Windows
+    runs-on: windows-latest
+
+    steps:
+      - uses: compnerd/gha-setup-swift@main
+        with:
+          branch: swift-5.10-release
+          tag: 5.10-RELEASE
+
+      - uses: actions/checkout@v4
+      - run: swift test -v --enable-test-discovery --parallel

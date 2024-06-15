@@ -1,0 +1,15 @@
+{
+  "originHash" : "5af39a2e236327f7e380a10b2ff9c20e82fe3834bfc0370166d8eee01aef8b70",
+  "pins" : [
+    {
+      "identity" : "swinjectlight",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/marekpridal/SwinjectLight",
+      "state" : {
+        "branch" : "develop",
+        "revision" : "5a32301814a8e9f89dfafa30c9a97334c2fe1906"
+      }
+    }
+  ],
+  "version" : 3
+}

@@ -1,0 +1,37 @@
+
+name: Build
+
+on:
+  push:
+    branches:
+    - '*'
+    - '!feature/**'
+
+jobs:
+  build:
+    name: Build
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+
+      - name: Build
+        run: swift build -v
+
+  build-windows:
+    name: Build Windows
+    runs-on: windows-latest
+
+    steps:
+      - uses: compnerd/gha-setup-swift@main
+        with:
+          branch: swift-5.10-release
+          tag: 5.10-RELEASE
+
+      - uses: actions/checkout@v4
+      - run: swift build -v

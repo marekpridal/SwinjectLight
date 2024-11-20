@@ -14,7 +14,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-latest, ubuntu-latest]
+        os: [macos-15, ubuntu-latest]
 
     steps:
       - name: Checkout branch
@@ -30,8 +30,8 @@ jobs:
     steps:
       - uses: compnerd/gha-setup-swift@main
         with:
-          branch: swift-5.10-release
-          tag: 5.10-RELEASE
+          branch: swift-6.0-release
+          tag: 6.0-RELEASE
 
       - uses: actions/checkout@v4
       - run: swift test -v --enable-test-discovery --parallel

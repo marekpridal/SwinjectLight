@@ -16,9 +16,12 @@ public final class Container {
         let key = "\(type)"
         storage[key] = factory
     }
-}
 
-// TODO: MP
+    public func register<Service, Parameters>(_ type: Service.Type, parametersType: Parameters.Type, factory: @escaping (Resolver, Parameters) -> Service) {
+        let key = "\(type)"
+        storage[key] = factory
+    }
+}
 
 #if !canImport(Darwin)
 extension Container: @unchecked Sendable { }
@@ -34,6 +37,18 @@ extension Container: Resolver {
             fatalError("Dependency \(key) did not provide factory closure")
         }
         let service = typedFactory?(self)
+        return service!
+    }
+
+    public func resolve<Service, Parameters>(_ type: Service.Type, parameters: Parameters) -> Service {
+        let key = "\(type)"
+        guard let factory = storage[key] else {
+            fatalError("Dependency \(key) has not been registered")
+        }
+        guard let typedFactory = factory as? (((Resolver, Parameters) -> Service)?) else {
+            fatalError("Dependency \(key) did not provide factory closure")
+        }
+        let service = typedFactory?(self, parameters)
         return service!
     }
 }

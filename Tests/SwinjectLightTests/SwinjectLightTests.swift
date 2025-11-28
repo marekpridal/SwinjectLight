@@ -4,6 +4,9 @@ import XCTest
 private protocol MockDependency: AnyObject { }
 private class MockClass: MockDependency { }
 
+#if canImport(Darwin)
+@MainActor
+#endif
 final class SwinjectLightTests: XCTestCase {
     func testRegisterAndResolve() {
         let container = Container()

@@ -1,10 +1,13 @@
 import Foundation
 
+#if canImport(Darwin)
+@MainActor
+#endif
 public protocol Resolver: AnyObject {
     func resolve<Service>(_ type: Service.Type) -> Service
 }
 
-public final class Container: @unchecked Sendable {
+public final class Container {
     private var storage: [String: Any] = [:]
 
     public init() { }
@@ -14,6 +17,10 @@ public final class Container: @unchecked Sendable {
         storage[key] = factory
     }
 }
+
+#if !canImport(Darwin)
+extension Container: @unchecked Sendable { }
+#endif
 
 extension Container: Resolver {
     public func resolve<Service>(_ type: Service.Type) -> Service {

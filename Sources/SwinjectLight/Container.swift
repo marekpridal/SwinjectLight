@@ -17,7 +17,9 @@ public final class Container {
         storage[key] = factory
     }
 
-    public func register<Service, Parameters>(_ type: Service.Type, parametersType: Parameters.Type, factory: @escaping (Resolver, Parameters) -> Service) {
+    public func register<Service, Parameters>(_ type: Service.Type,
+                                              parametersType: Parameters.Type,
+                                              factory: @escaping (Resolver, Parameters) -> Service) {
         let key = "\(type)"
         storage[key] = factory
     }

@@ -1,3 +1,5 @@
 excluded:
   - DIDemoApp
   - Package.swift
+
+line_length: 140

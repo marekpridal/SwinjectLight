@@ -33,7 +33,7 @@ final class SwinjectLightTests: XCTestCase {
         XCTAssertFalse(localVariable === resolvedDependency)
     }
 
-    func testSharedInstace() {
+    func testSharedInstance() {
         let container = Container()
         let localVariable = MockClass()
         container.register(MockDependency.self) { _ in

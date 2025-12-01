@@ -5,6 +5,7 @@ import Foundation
 #endif
 public protocol Resolver: AnyObject {
     func resolve<Service>(_ type: Service.Type) -> Service
+    func resolve<Service, Parameters>(_ type: Service.Type, parameters: Parameters) -> Service
 }
 
 public final class Container {
